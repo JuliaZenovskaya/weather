@@ -1,0 +1,12 @@
+.city_input {
+  float: left;
+  margin-top: 30px;
+}
+
+.fav_cities {
+  float: left;
+  width: 70%;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 30px;
+}
