@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setCoords, getErrorResponse } from '../../actions/GeoAction';
 import { getWeatherByCoords } from '../../fetch/GetWeatherByCoords';
+import Weather from '../Weather/Weather';
 
 class GeolocationBlock extends React.Component {
   componentDidMount() {
@@ -15,6 +16,9 @@ class GeolocationBlock extends React.Component {
         <div className="headText">Погода здесь</div>
         <button className="headButton" onClick={this.getGeo()}>Обновить геолокацию</button>
       </div>
+      {this.props.weather && <Weather weather={this.props.weather}/>}
+      {this.props.error && <div className="error">Error: {this.props.error}</div>}
+      {!this.props.weather && !this.props.error && <div>Данные загружаются...</div>}
       </div>
     );
   }
@@ -22,13 +26,20 @@ class GeolocationBlock extends React.Component {
   getGeo() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        this.props.setCoords({lat: position.coords.latitude, lon: position.coords.longitude});
+        const coords = {
+          lat: position.coords.latitude,
+          lon: position.coords.longitude
+        }
+        this.props.setCoords(coords);
         this.props.getWeatherByCoords(this.props.coords);
       },
       () => {
-        this.props.setCoords({lat: 10, lon: 10});
+        const coords = {
+          lat: 10,
+          lon: 10
+        }
+        this.props.setCoords(coords);
         this.props.getWeatherByCoords(this.props.coords);
-        alert('Permission denied. Load weather from default coordinates');
       });
     } else {
       this.props.getErrorResponse('your browser does not support geolocation');
