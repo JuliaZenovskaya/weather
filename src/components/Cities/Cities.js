@@ -43,8 +43,8 @@ class Cities extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    favorites: state.fav.favorites,
-    error: state.fav.error
+    favorites: state.fav_cities.favorites,
+    error: state.fav_cities.error
   };
 }
 

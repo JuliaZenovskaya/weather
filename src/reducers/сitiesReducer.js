@@ -4,7 +4,7 @@ const initialState = {
   favorites: getAddedCitiesFromStorage()
 };
 
-export default function favReducer(state = initialState, action) {
+export default function citiesReducer(state = initialState, action) {
   state = {
     ...state,
     error: false,

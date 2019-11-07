@@ -5,13 +5,13 @@ import thunk from "redux-thunk";
 
 const reducer = combineReducers({
 geolocation : geoReducer,
-fav : сitiesReducer,
+fav_cities : сitiesReducer,
 })
 
 const store = createStore (reducer, applyMiddleware(thunk));
 
 store.subscribe(() => {
-  localStorage.setItem('cities', JSON.stringify([...store.getState().fav.favorites.keys()]));
+  localStorage.setItem('cities', JSON.stringify([...store.getState().fav_cities.favorites.keys()]));
 });
 
 export default store;
