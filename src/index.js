@@ -7,14 +7,16 @@ import { Provider } from 'react-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from "redux-thunk";
 import geoReducer from './reducers/GeoReducer';
-import favReducer from './reducers/FavReducer';
+import citiesReducer from './reducers/CitiesReducer';
 
 const weatherStore = createStore (combineReducers({
 geo : geoReducer,
-fav : favReducer,
+cities : citiesReducer,
 }), applyMiddleware(thunk));
 
-
+weatherStore.subscribe(() => {
+  localStorage.setItem('cities', JSON.stringify([...weatherStore.getState().cities.cities.keys()]));
+});
 
 ReactDOM.render(
 <Provider store = {weatherStore}>
@@ -22,6 +24,13 @@ ReactDOM.render(
   </Provider>, document.getElementById('root'));
 
 
+export default function getCitiesFromStorage(key = 'cities') {
+  let cities = [];
+  const localStorageContent = JSON.parse(localStorage.getItem(key));
+  if (localStorageContent !== null && Array.isArray(localStorageContent))
+  cities = localStorageContent;
+  return new Map(cities.map(cityName => [cityName]));
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
