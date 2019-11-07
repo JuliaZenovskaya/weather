@@ -1,7 +1,5 @@
-export const LOCAL_STORAGE_KEY = "added_cities";
-
-export default function getAddedCitiesFromStorage(key = LOCAL_STORAGE_KEY) {
-  const localValue = localStorage.getItem(key);
+export default function getAddedCitiesFromStorage() {
+  const localValue = localStorage.getItem('cities');
   const localStorageContent = JSON.parse(localValue);
   let favorites = [];
   if (localStorageContent !== null && Array.isArray(localStorageContent))
