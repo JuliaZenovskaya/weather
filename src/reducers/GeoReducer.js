@@ -1,4 +1,4 @@
-export default function GeoReducer (state, action) {
+export default function geoReducer (state, action) {
   state = {
     ...state,
     error: false
@@ -8,7 +8,7 @@ export default function GeoReducer (state, action) {
       state.coords = action.payload;
       break;
     case 'GET_SUCCESS_RESPONSE':
-      state.weather =  action.payload;
+      state.forecast =  action.payload;
       break;
     case 'GET_ERROR_RESPONSE':
       state.error = action.payload;

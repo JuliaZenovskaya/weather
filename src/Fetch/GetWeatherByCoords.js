@@ -1,4 +1,4 @@
-import { getSuccessResponse, getErrorResponse } from '../actions/GeoAction';
+import { getSuccessResponse, getErrorResponse } from '../actions/geoAction';
 
 export function getWeatherByCoords(coords) {
  return function(dispatch) {

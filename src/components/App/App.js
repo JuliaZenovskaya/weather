@@ -1,47 +1,38 @@
 import React from 'react';
-import './App.css';
-import { connect } from 'react-redux';
-import { setCoords, getErrorResponse } from '../../actions/GeoAction';
-import { getWeatherByCoords } from '../../fetch/GetWeatherByCoords';
-import Weather from '../Weather/Weather';
-import CitiesBlock from '../CitiesBlock/CitiesBlock'
+import Weather from '../Weather/Weather'
+import Cities from '../Cities/Cities'
+import { connect } from "react-redux";
+import { setCoords, getErrorResponse } from '../../actions/geoAction';
+import { getWeatherByCoords } from '../../fetch/getWeatherByCoords';
 
 class App extends React.Component {
   componentDidMount() {
-    this.getGeo();
+    this.getGeolocation();
   }
 
   render() {
     return (
       <div className="App">
-      <div className="head">
-        <div className="headText">Погода здесь</div>
-        <button className="headButton" onClick={this.getGeo()}>Обновить геолокацию</button>
-      </div>
-      {this.props.weather && <Weather weather={this.props.weather}/>}
-      {this.props.error && <div className="error">Error: {this.props.error}</div>}
-      {!this.props.weather && !this.props.error && <div>Данные загружаются...</div>}
-      <CitiesBlock/>
+        <div>
+          <div>Погода здесь</div>
+          <button className="headerButton" onClick={this.getGeolocation}>Обновить местоположение</button>
+        </div>
+        {this.props.forecast && <Weather weather={this.props.forecast}/>}
+        {this.props.error && <div className="error">Error: {this.props.error}</div>}
+        {!this.props.forecast && !this.props.error && <div>Загрузка...</div>}
+        <Cities/>
       </div>
     );
   }
 
-  getGeo() {
+  getGeolocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        const coords = {
-          lat: position.coords.latitude,
-          lon: position.coords.longitude
-        }
-        this.props.setCoords(coords);
+        this.props.setCoords({lat: position.coords.latitude, lon: position.coords.longitude});
         this.props.getWeatherByCoords(this.props.coords);
       },
       () => {
-        const coords = {
-          lat: 10,
-          lon: 10
-        }
-        this.props.setCoords(coords);
+        this.props.setCoords({lat: 51.51, lon: -0.13});
         this.props.getWeatherByCoords(this.props.coords);
       });
     } else {
@@ -53,12 +44,11 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
 return {
-  coords: state.geo.coords,
-  weather: state.geo.weather,
-  error: state.geo.error
+  coords: state.geolocation.coords,
+  forecast: state.geolocation.forecast,
+  error: state.geolocation.error
 };
 }
-
 
 function mapDispatchToProps(dispatch) {
 return {
