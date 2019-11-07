@@ -44,9 +44,9 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
 return {
-  coords: state.geolocation.coords,
-  forecast: state.geolocation.forecast,
-  error: state.geolocation.error
+  coords: state.geo.coords,
+  forecast: state.geo.forecast,
+  error: state.geo.error
 };
 }
 

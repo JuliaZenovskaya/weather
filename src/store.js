@@ -4,7 +4,7 @@ import сitiesReducer from './reducers/сitiesReducer';
 import thunk from "redux-thunk";
 
 const reducer = combineReducers({
-geolocation : geoReducer,
+geo : geoReducer,
 fav_cities : сitiesReducer,
 })
 
