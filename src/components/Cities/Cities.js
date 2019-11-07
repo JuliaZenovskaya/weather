@@ -17,7 +17,7 @@ class Cities extends React.Component {
         </form>
       </div>
         {this.props.error && <div className="error">Error: {this.props.error}</div>}
-        <div className="forecasts">
+        <div>
           {
             [...this.props.cities.entries()].map((entry) => {
               return (

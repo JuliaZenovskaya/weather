@@ -4,6 +4,7 @@ import Cities from '../Cities/Cities'
 import { connect } from "react-redux";
 import { setCoords, getErrorResponse } from '../../actions/geoAction';
 import { getWeatherByCoords } from '../../fetch/getWeatherByCoords';
+import './App.css';
 
 class App extends React.Component {
   componentDidMount() {
@@ -14,12 +15,14 @@ class App extends React.Component {
     return (
       <div className="App">
         <div>
-          <div>Погода здесь</div>
-          <button className="headerButton" onClick={this.getGeolocation}>Обновить местоположение</button>
+          <div class='header_text'>Погода здесь</div>
+          <button className='header_button' onClick={this.getGeolocation}>Обновить местоположение</button>
         </div>
-        {this.props.forecast && <Weather weather={this.props.forecast}/>}
-        {this.props.error && <div className="error">Error: {this.props.error}</div>}
-        {!this.props.forecast && !this.props.error && <div>Загрузка...</div>}
+        <div className='geo_weather'>
+        {this.props.weather && <Weather weather={this.props.weather}/>}
+        {this.props.error && <div className='error'>Error: {this.props.error}</div>}
+        {!this.props.weather && !this.props.error && <div>Загрузка...</div>}
+        </div>
         <Cities/>
       </div>
     );
@@ -45,7 +48,7 @@ class App extends React.Component {
 function mapStateToProps(state) {
 return {
   coords: state.geo.coords,
-  forecast: state.geo.forecast,
+  weather: state.geo.weather,
   error: state.geo.error
 };
 }
