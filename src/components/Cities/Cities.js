@@ -19,7 +19,7 @@ class Cities extends React.Component {
         {this.props.error && <div className="error">Error: {this.props.error}</div>}
         <div className="forecasts">
           {
-            [...this.props.favorites.entries()].map((entry) => {
+            [...this.props.cities.entries()].map((entry) => {
               return (
                 <Weather
                   key={entry[0]}
@@ -43,7 +43,7 @@ class Cities extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    favorites: state.fav_cities.favorites,
+    cities: state.fav_cities.cities,
     error: state.fav_cities.error
   };
 }

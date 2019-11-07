@@ -11,7 +11,7 @@ fav_cities : сitiesReducer,
 const store = createStore (reducer, applyMiddleware(thunk));
 
 store.subscribe(() => {
-  localStorage.setItem('cities', JSON.stringify([...store.getState().fav_cities.favorites.keys()]));
+  localStorage.setItem('cities', JSON.stringify([...store.getState().fav_cities.cities.keys()]));
 });
 
 export default store;

@@ -1,31 +1,31 @@
 import getAddedCitiesFromStorage from "../localStorage";
 
 const initialState = {
-  favorites: getAddedCitiesFromStorage()
+  cities: getAddedCitiesFromStorage()
 };
 
 export default function citiesReducer(state = initialState, action) {
   state = {
     ...state,
     error: false,
-    favorites: new Map(state.favorites)
+    cities: new Map(state.cities)
   };
 
   switch (action.type) {
     case 'ADD_CITY':
-      if (!state.favorites.has(action.payload))
-        state.favorites.set(action.payload);
+      if (!state.cities.has(action.payload))
+        state.cities.set(action.payload);
       break;
     case 'DELETE_CITY':
-      state.favorites.delete(action.payload);
+      state.cities.delete(action.payload);
       break;
     case 'FETCH_ADDED_CITY_SUCCESS':
-      state.favorites.delete(action.payload.cityName);
-      state.favorites.set(action.payload.response.name, action.payload.response);
+      state.cities.delete(action.payload.cityName);
+      state.cities.set(action.payload.response.name, action.payload.response);
       break;
     case 'FETCH_ADDED_CITY_ERROR':
       state.error = action.payload.error;
-      state.favorites.delete(action.payload.cityName);
+      state.cities.delete(action.payload.cityName);
       break;
     default:
       break;

@@ -1,8 +1,8 @@
 export default function getAddedCitiesFromStorage() {
   const localValue = localStorage.getItem('cities');
   const localStorageContent = JSON.parse(localValue);
-  let favorites = [];
+  let cities = [];
   if (localStorageContent !== null && Array.isArray(localStorageContent))
-    favorites = localStorageContent;
-  return new Map(favorites.map(cityName => [cityName]));
+    cities = localStorageContent;
+  return new Map(cities.map(cityName => [cityName]));
 }
