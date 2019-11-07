@@ -1,5 +1,4 @@
 .city_input {
-  float: left;
   margin-top: 30px;
 }
 
@@ -9,4 +8,14 @@
   font-size: 20px;
   font-weight: bold;
   margin-top: 30px;
+}
+
+.error {
+  color: red;
+  font-size: 20px;
+}
+
+.weather {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }

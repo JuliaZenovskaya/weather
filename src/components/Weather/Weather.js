@@ -1,4 +1,5 @@
 import React from "react";
+import './Weather.css';
 
 class WeatherData extends React.Component {
   componentDidMount() {
@@ -11,16 +12,20 @@ class WeatherData extends React.Component {
     }
 
     return (
-      <div>
-      <div>{this.props.weather.name}</div>
-      {this.props.onDelete && <button className="button" onClick={this.props.onDelete}>Удалить</button>}
-      <img src={`https://openweathermap.org/img/wn/${this.props.weather.weather[0].icon}.png`} />
-      <div>{Math.round(this.props.weather.main.temp)} °C</div>
-      <div>Давление: {this.props.weather.main.pressure} hPa</div>
-      <div>Влажность: {this.props.weather.main.humidity}%</div>
-      <div>Облачность: {this.props.weather.weather[0].description}</div>
-      <div>Ветер: {this.props.weather.wind.speed} м/с</div>
-      <div>Координаты: [{this.props.weather.coord.lon}, {this.props.weather.coord.lat}]</div>
+      <div className="weather">
+      <div className="left">
+        <div>{this.props.weather.name}</div>
+        <img src={`https://openweathermap.org/img/wn/${this.props.weather.weather[0].icon}.png`} />
+        <div>{Math.round(this.props.weather.main.temp)} °C</div>
+        {this.props.onDelete && <button className="button" onClick={this.props.onDelete}>Удалить</button>}
+      </div>
+      <div className="right">
+        <div className="pressure">Давление: {this.props.weather.main.pressure} hPa</div>
+        <div className="humidity">Влажность: {this.props.weather.main.humidity}%</div>
+        <div className="clouds">Облачность: {this.props.weather.weather[0].description}</div>
+        <div className="wind">Ветер: {this.props.weather.wind.speed} м/с</div>
+        <div className="coords">Координаты: [{this.props.weather.coord.lon}, {this.props.weather.coord.lat}]</div>
+      </div>
       </div>
     );
   }

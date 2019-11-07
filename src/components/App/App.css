@@ -1,6 +1,6 @@
 .App {
-  width: 80%;
-  margin: 2% 10%;
+  width: 60%;
+  margin: 2% 20%;
   background-color: rgb(222, 244, 213);
   padding: 1%;
   border: 2px rgb(50, 112, 51) ridge;
@@ -14,6 +14,6 @@
 }
 
 .geo_weather {
-  margin-top: 10px;
+  margin-top: 20px;
   margin-left: 10px;
 }

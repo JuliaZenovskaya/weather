@@ -15,9 +15,9 @@ class Cities extends React.Component {
           <input className="city_input" type="text" name="city" required />
           <input className="city_button" type="submit" value="Добавить"/>
         </form>
-      </div>
+      </div >
         {this.props.error && <div className="error">Error: {this.props.error}</div>}
-        <div>
+        <div  className="weather">
           {
             [...this.props.cities.entries()].map((entry) => {
               return (
