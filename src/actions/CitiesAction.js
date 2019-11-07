@@ -12,7 +12,7 @@ export function deleteCity(city) {
   };
 }
 
-export function fetchAddedCitiesSuccess(response, city) {
+export function getSuccessResponse(response, city) {
   return {
     type: 'GET_SUCCESS_RESPONSE',
     payload: {
@@ -22,7 +22,7 @@ export function fetchAddedCitiesSuccess(response, city) {
   }
 }
 
-export function fetchAddedCitiesError(error, city) {
+export function getErrorResponse(error, city) {
   return {
     type: 'GET_ERROR_RESPONSE',
     payload: {

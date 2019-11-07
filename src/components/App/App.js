@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { setCoords, getErrorResponse } from '../../actions/GeoAction';
 import { getWeatherByCoords } from '../../fetch/GetWeatherByCoords';
 import Weather from '../Weather/Weather';
+import CitiesBlock from '../CitiesBlock/CitiesBlock'
 
 class App extends React.Component {
   componentDidMount() {
@@ -20,6 +21,7 @@ class App extends React.Component {
       {this.props.weather && <Weather weather={this.props.weather}/>}
       {this.props.error && <div className="error">Error: {this.props.error}</div>}
       {!this.props.weather && !this.props.error && <div>Данные загружаются...</div>}
+      <CitiesBlock/>
       </div>
     );
   }
