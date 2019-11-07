@@ -20,12 +20,12 @@ export default function citiesReducer(state = initialState, action) {
       state.cities.delete(action.payload);
       break;
     case 'FETCH_ADDED_CITY_SUCCESS':
-      state.cities.delete(action.payload.cityName);
+      state.cities.delete(action.payload.city);
       state.cities.set(action.payload.response.name, action.payload.response);
       break;
     case 'FETCH_ADDED_CITY_ERROR':
       state.error = action.payload.error;
-      state.cities.delete(action.payload.cityName);
+      state.cities.delete(action.payload.city);
       break;
     default:
       break;

@@ -4,5 +4,5 @@ export default function getAddedCitiesFromStorage() {
   let cities = [];
   if (localStorageContent !== null && Array.isArray(localStorageContent))
     cities = localStorageContent;
-  return new Map(cities.map(cityName => [cityName]));
+  return new Map(cities.map(city => [city]));
 }

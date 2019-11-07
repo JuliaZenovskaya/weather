@@ -12,7 +12,7 @@ class Cities extends React.Component {
       <div>
         <div>Избраное</div>
         <form onSubmit={(e) => this.addNewCity(e)}>
-          <input type="text" name="cityName" required />
+          <input type="text" name="city" required />
           <input type="submit" value="Добавить"/>
         </form>
       </div>
@@ -36,7 +36,7 @@ class Cities extends React.Component {
 
   addNewCity(e) {
     e.preventDefault();
-    this.props.addCity(e.currentTarget.elements.cityName.value);
+    this.props.addCity(e.currentTarget.elements.city.value);
   }
 }
 
@@ -50,16 +50,16 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addCity: (cityName) => {
-      dispatch(addCity(cityName));
+    addCity: (city) => {
+      dispatch(addCity(city));
     },
 
-    deleteCity: (cityName) => {
-      dispatch(deleteCity(cityName));
+    deleteCity: (city) => {
+      dispatch(deleteCity(city));
     },
 
-    getWeatherByCity: (cityName) => {
-      dispatch(getWeatherByCity(cityName));
+    getWeatherByCity: (city) => {
+      dispatch(getWeatherByCity(city));
     }
   };
 }
