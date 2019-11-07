@@ -1,10 +1,6 @@
-import getAddedCitiesFromStorage from "../localStorage";
+import getCitiesFromStorage from "../index";
 
-const initialState = {
-  cities: getAddedCitiesFromStorage()
-};
-
-export default function citiesReducer(state = initialState, action) {
+export default function citiesReducer(state = {cities: getCitiesFromStorage()}, action) {
   state = {
     ...state,
     error: false,
