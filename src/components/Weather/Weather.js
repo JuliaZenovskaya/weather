@@ -3,7 +3,9 @@ import './Weather.css';
 
 class WeatherData extends React.Component {
   componentDidMount() {
-    if (this.props.getWeather) this.props.getWeather();
+    if (this.props.getWeather) {
+      this.props.getWeather();
+    }
   }
 
   render() {

@@ -2,7 +2,7 @@ import React from 'react';
 import Weather from '../Weather/Weather'
 import Cities from '../Cities/Cities'
 import { connect } from "react-redux";
-import { setCoords, getErrorResponse, getWeatherByCoords } from '../../actions/geoAction';
+import { setCoords, getErrorResponse, getWeatherByCoords, setTrue } from '../../actions/geoAction';
 import './App.css';
 
 class App extends React.Component {
@@ -20,7 +20,7 @@ class App extends React.Component {
         <div className='geo_weather'>
         {this.props.weather && <Weather weather={this.props.weather}/>}
         {this.props.error && <div className='error'>Error: {this.props.error}</div>}
-        {!this.props.weather && !this.props.error && <div>Загрузка...</div>}
+        {(this.props.isloading || !this.props.weather && !this.props.error) && <div>Загрузка...</div>}
         </div>
         <Cities/>
       </div>
@@ -28,6 +28,7 @@ class App extends React.Component {
   }
 
    getGeolocation() {
+    this.props.setTrue(true);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.props.setCoords({lat: position.coords.latitude, lon: position.coords.longitude});
@@ -48,7 +49,8 @@ function mapStateToProps(state) {
 return {
   coords: state.geo.coords,
   weather: state.geo.weather,
-  error: state.geo.error
+  error: state.geo.error,
+  isloading: state.geo.isloading
 };
 }
 
@@ -56,6 +58,10 @@ function mapDispatchToProps(dispatch) {
 return {
   setCoords: (coords) => {
     dispatch(setCoords(coords));
+  },
+
+  setTrue: (tr) => {
+    dispatch(setTrue(tr));
   },
 
   getWeatherByCoords: (coords) => {
