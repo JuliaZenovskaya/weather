@@ -21,7 +21,7 @@ storeWeather.subscribe(() => {
 ReactDOM.render(
 <Provider store = {storeWeather}>
   <App />
-  </Provider>, document.getElementById('root'));
+</Provider>, document.getElementById('root'));
 
 export default function getCitiesFromStorage() {
   const localValue = localStorage.getItem('cities');

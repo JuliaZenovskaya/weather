@@ -15,8 +15,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <div>
-          <div class='header_text'>Погода здесь</div>
-          <button className='header_button' onClick={this.getGeolocation}>Обновить местоположение</button>
+          <div className='header_text'>Погода здесь</div>
+          <button className='header_button' onClick={this.getGeolocation.bind(this)}>Обновить местоположение</button>
         </div>
         <div className='geo_weather'>
         {this.props.weather && <Weather weather={this.props.weather}/>}
@@ -28,14 +28,14 @@ class App extends React.Component {
     );
   }
 
-  getGeolocation() {
+   getGeolocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.props.setCoords({lat: position.coords.latitude, lon: position.coords.longitude});
         this.props.getWeatherByCoords(this.props.coords);
       },
       () => {
-        this.props.setCoords({lat: 51.51, lon: -0.13});
+        this.props.setCoords({lat: 59.94, lon: 30.32});
         this.props.getWeatherByCoords(this.props.coords);
       });
     } else {
