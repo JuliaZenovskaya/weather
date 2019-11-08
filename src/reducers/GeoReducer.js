@@ -1,6 +1,6 @@
-export default function geoReducer (state, action) {
-  state = {
-    ...state,
+export default function geoReducer (currentState, action) {
+  let state = {
+    ...currentState,
     error: false
   };
   switch (action.type) {

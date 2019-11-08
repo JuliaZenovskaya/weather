@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Weather from '../Weather/Weather';
-import { addCity, deleteCity } from '../../actions/сitiesAction';
-import { getWeatherByCity } from '../../fetch/getWeatherByCity';
+import { addCity, deleteCity, getWeatherByCity } from '../../actions/сitiesAction';
 import './Cities.css';
 
 class Cities extends React.Component {
@@ -10,7 +9,7 @@ class Cities extends React.Component {
     return (
       <div>
       <div>
-        <div className="fav_cities">Избраное</div>
+        <div className="fav_cities">Избранное</div>
         <form onSubmit={(e) => this.addNewCity(e)}>
           <input className="city_input" type="text" name="city" required />
           <input className="city_button" type="submit" value="Добавить"/>

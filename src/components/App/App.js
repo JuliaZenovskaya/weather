@@ -2,8 +2,7 @@ import React from 'react';
 import Weather from '../Weather/Weather'
 import Cities from '../Cities/Cities'
 import { connect } from "react-redux";
-import { setCoords, getErrorResponse } from '../../actions/geoAction';
-import { getWeatherByCoords } from '../../fetch/getWeatherByCoords';
+import { setCoords, getErrorResponse, getWeatherByCoords } from '../../actions/geoAction';
 import './App.css';
 
 class App extends React.Component {

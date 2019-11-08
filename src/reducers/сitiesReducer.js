@@ -1,10 +1,10 @@
 import getCitiesFromStorage from "../index";
 
-export default function citiesReducer(state = {cities: getCitiesFromStorage()}, action) {
-  state = {
-    ...state,
+export default function citiesReducer(currentState = {cities: getCitiesFromStorage()}, action) {
+  let state = {
+    ...currentState,
     error: false,
-    cities: new Map(state.cities)
+    cities: new Map(currentState.cities)
   };
 
   switch (action.type) {
