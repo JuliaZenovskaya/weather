@@ -18,9 +18,9 @@ class App extends React.Component {
           <button className='header_button' onClick={this.getGeolocation.bind(this)}>Обновить местоположение</button>
         </div>
         <div className='geo_weather'>
-        {this.props.weather && <Weather weather={this.props.weather}/>}
+        {this.props.weather && !this.props.isloading && <Weather weather={this.props.weather}/>}
         {this.props.error && <div className='error'>Error: {this.props.error}</div>}
-        {(this.props.isloading || !this.props.weather && !this.props.error) && <div>Загрузка...</div>}
+        {this.props.isloading && <div>Загрузка...</div>}
         </div>
         <Cities/>
       </div>

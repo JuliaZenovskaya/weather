@@ -8,7 +8,6 @@ export default function geoReducer (currentState, action) {
     state.isloading = action.payload;
     case 'SET_COORDS':
       state.coords = action.payload;
-      state.isloading = false;
       break;
     case 'GET_SUCCESS_RESPONSE':
       state.weather =  action.payload;
