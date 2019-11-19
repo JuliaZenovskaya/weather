@@ -1,7 +1,7 @@
 import React from "react";
 import './Weather.css';
 
-class WeatherData extends React.Component {
+class Weather extends React.Component {
   componentDidMount() {
     if (this.props.getWeather) {
       this.props.getWeather();
@@ -33,4 +33,4 @@ class WeatherData extends React.Component {
   }
 }
 
-export default WeatherData
+export default Weather
