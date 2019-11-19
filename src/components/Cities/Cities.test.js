@@ -27,7 +27,7 @@ describe("Correct display for cities", () => {
     let cities = new Map();
       const store = tempStore({
         fav_cities: {
-              cities: cities
+          cities: cities
           }
         });
 
@@ -65,8 +65,8 @@ describe("Some error with displaying cities", () => {
     let cities = new Map();
       const store = tempStore({
         fav_cities: {
-              cities: cities,
-              error: 'error'
+          cities: cities,
+          error: 'error'
           }
         });
 
@@ -84,8 +84,8 @@ describe("Some error with displaying cities", () => {
     let cities = new Map([["Moscow", response], ["AnotherMoscow", response]]);
       const store = tempStore({
         fav_cities: {
-              cities: cities,
-              error: 'error'
+          cities: cities,
+          error: 'error'
           }
         });
 

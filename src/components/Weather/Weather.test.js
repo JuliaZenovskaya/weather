@@ -32,15 +32,15 @@ describe("Weather for geolocation", () => {
 describe("Weather for the city", () => {
   it ("Weather has loaded", () => {
     const htmlTree = renderer.create(<Weather
-          getWeather={()=> {}}
-          onDelete={()=> {}}/>).toJSON();
+      getWeather={()=> {}}
+      onDelete={()=> {}}/>).toJSON();
     expect(htmlTree).toMatchSnapshot();
   });
   it ("Weather is loading", () => {
     const htmlTree = renderer.create(<Weather
-          weather={response}
-          getWeather={()=> {}}
-          onDelete={()=> {}}/>).toJSON();
+      weather={response}
+      getWeather={()=> {}}
+      onDelete={()=> {}}/>).toJSON();
     expect(htmlTree).toMatchSnapshot();
   });
 });

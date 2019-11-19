@@ -28,8 +28,8 @@ describe("Weather in displaying with favourite cities", () => {
     let cities = new Map([["Moscow", response]]);
     const store = tempStore({
       geo: {
-            weather: response,
-            isloading: false
+        weather: response,
+        isloading: false
         },
       fav_cities: {
         cities: cities
@@ -51,8 +51,8 @@ describe("Weather in displaying with favourite cities", () => {
     let cities = new Map([["Moscow", response]]);
     const store = tempStore({
       geo: {
-            weather: response,
-            isloading: true
+        weather: response,
+        isloading: true
         },
       fav_cities: {
         cities: cities
@@ -74,7 +74,7 @@ describe("Weather in displaying with favourite cities", () => {
     let cities = new Map([["Moscow", response]]);
     const store = tempStore({
       geo: {
-            isloading: true
+        isloading: true
         },
       fav_cities: {
         cities: cities
@@ -96,7 +96,7 @@ describe("Weather in displaying with favourite cities", () => {
     let cities = new Map([["Moscow", response]]);
     const store = tempStore({
       geo: {
-            error: 'error'
+        error: 'error'
         },
       fav_cities: {
         cities: cities
@@ -120,8 +120,8 @@ describe("Weather in displaying without favourite cities", () => {
     let cities = new Map();
     const store = tempStore({
       geo: {
-            weather: response,
-            isloading: false
+        weather: response,
+        isloading: false
         },
       fav_cities: {
         cities: cities
@@ -143,8 +143,8 @@ describe("Weather in displaying without favourite cities", () => {
     let cities = new Map();
     const store = tempStore({
       geo: {
-            weather: response,
-            isloading: true
+        weather: response,
+        isloading: true
         },
       fav_cities: {
         cities: cities
@@ -166,7 +166,7 @@ describe("Weather in displaying without favourite cities", () => {
     let cities = new Map();
     const store = tempStore({
       geo: {
-            isloading: true
+        isloading: true
         },
       fav_cities: {
         cities: cities
@@ -188,7 +188,7 @@ describe("Weather in displaying without favourite cities", () => {
     let cities = new Map();
     const store = tempStore({
       geo: {
-            error: 'error'
+        error: 'error'
         },
       fav_cities: {
         cities: cities
