@@ -5,7 +5,7 @@ import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux'
 import thunk from "redux-thunk";
 
-const store = configureMockStore([thunk]);
+const tempStore = configureMockStore([thunk]);
 const response = {
     "coord":{"lon":37.62,"lat":55.75},
     "weather":[{"id":701,"main":"Mist","description":"mist","icon":"50n"}],
@@ -25,7 +25,7 @@ const response = {
 describe("Correct display for cities", () => {
   it("There aren't any cities in the store", () => {
     let cities = new Map();
-      const tempStore = store({
+      const store = tempStore({
         fav_cities: {
               cities: cities
           }
@@ -33,7 +33,7 @@ describe("Correct display for cities", () => {
 
       const htmlTree = renderer.create(
         <Provider store={store}>
-          <AddedCities
+          <Cities
             addCity={()=> {}}
             deleteCity={()=> {}}
             getWeatherByCity={()=> {}}/>
@@ -42,8 +42,8 @@ describe("Correct display for cities", () => {
   });
 
   it("There are some cities in the store", () => {
-    let cities = new Map(["Moscow", response]);
-      const tempStore = store({
+    let cities = new Map([["Moscow", response]]);
+      const store = tempStore({
         fav_cities: {
               cities: cities
           }
@@ -51,7 +51,7 @@ describe("Correct display for cities", () => {
 
       const htmlTree = renderer.create(
         <Provider store={store}>
-          <AddedCities
+          <Cities
             addCity={()=> {}}
             deleteCity={()=> {}}
             getWeatherByCity={()=> {}}/>
@@ -63,7 +63,7 @@ describe("Correct display for cities", () => {
 describe("Some error with displaying cities", () => {
   it("There aren't any cities in the store", () => {
     let cities = new Map();
-      const tempStore = store({
+      const store = tempStore({
         fav_cities: {
               cities: cities,
               error: 'error'
@@ -72,7 +72,7 @@ describe("Some error with displaying cities", () => {
 
       const htmlTree = renderer.create(
         <Provider store={store}>
-          <AddedCities
+          <Cities
             addCity={()=> {}}
             deleteCity={()=> {}}
             getWeatherByCity={()=> {}}/>
@@ -81,17 +81,17 @@ describe("Some error with displaying cities", () => {
   });
 
   it("There are some cities in the store", () => {
-    let cities = new Map(["Moscow", response]);
-      const tempStore = store({
+    let cities = new Map([["Moscow", response], ["AnotherMoscow", response]]);
+      const store = tempStore({
         fav_cities: {
-              cities: cities, 
+              cities: cities,
               error: 'error'
           }
         });
 
       const htmlTree = renderer.create(
         <Provider store={store}>
-          <AddedCities
+          <Cities
             addCity={()=> {}}
             deleteCity={()=> {}}
             getWeatherByCity={()=> {}}/>

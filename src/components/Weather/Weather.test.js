@@ -38,7 +38,7 @@ describe("Weather for the city", () => {
   });
   it ("Weather is loading", () => {
     const htmlTree = renderer.create(<Weather
-          weather={weatherTestData}
+          weather={response}
           getWeather={()=> {}}
           onDelete={()=> {}}/>).toJSON();
     expect(htmlTree).toMatchSnapshot();
