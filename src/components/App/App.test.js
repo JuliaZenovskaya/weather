@@ -23,7 +23,83 @@ const response = {
     "cod":200
   };
 
-describe("Weather in displaying", () => {
+describe("Weather in displaying with favourite cities", () => {
+  it("Weather exists and is not loading", () => {
+    let cities = new Map([["Moscow", response]]);
+    const store = tempStore({
+      geo: {
+        weather: response,
+        isloading: false
+        },
+      fav_cities: {
+        cities: cities
+      }
+    });
+
+    const htmlTree = renderer.create(
+      <Provider store={store}>
+        <App/>
+     </Provider>).toJSON();
+    expect(htmlTree).toMatchSnapshot();
+  });
+
+  it("Weather exists but is loading", () => {
+    let cities = new Map([["Moscow", response]]);
+    const store = tempStore({
+      geo: {
+        weather: response,
+        isloading: true
+        },
+      fav_cities: {
+        cities: cities
+      }
+    });
+
+    const htmlTree = renderer.create(
+      <Provider store={store}>
+        <App/>
+     </Provider>).toJSON();
+    expect(htmlTree).toMatchSnapshot();
+  });
+
+  it("Weather is not exists and is loading", () => {
+    let cities = new Map([["Moscow", response]]);
+    const store = tempStore({
+      geo: {
+        isloading: true
+        },
+      fav_cities: {
+        cities: cities
+      }
+    });
+
+    const htmlTree = renderer.create(
+      <Provider store={store}>
+        <App/>
+     </Provider>).toJSON();
+    expect(htmlTree).toMatchSnapshot();
+  });
+
+  it("Some error with displaying weather", () => {
+    let cities = new Map([["Moscow", response]]);
+    const store = tempStore({
+      geo: {
+        error: 'error'
+        },
+      fav_cities: {
+        cities: cities
+      }
+    });
+
+    const htmlTree = renderer.create(
+      <Provider store={store}>
+        <App/>
+     </Provider>).toJSON();
+    expect(htmlTree).toMatchSnapshot();
+  });
+});
+
+describe("Weather in displaying without favourite cities", () => {
   it("Weather exists and is not loading", () => {
     let cities = new Map();
     const store = tempStore({
