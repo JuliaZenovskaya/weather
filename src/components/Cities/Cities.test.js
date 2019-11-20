@@ -33,10 +33,7 @@ describe("Correct display for cities", () => {
 
       const htmlTree = renderer.create(
         <Provider store={store}>
-          <Cities
-            addCity={()=> {}}
-            deleteCity={()=> {}}
-            getWeatherByCity={()=> {}}/>
+          <Cities/>
        </Provider>).toJSON();
       expect(htmlTree).toMatchSnapshot();
   });
@@ -51,10 +48,7 @@ describe("Correct display for cities", () => {
 
       const htmlTree = renderer.create(
         <Provider store={store}>
-          <Cities
-            addCity={()=> {}}
-            deleteCity={()=> {}}
-            getWeatherByCity={()=> {}}/>
+          <Cities/>
        </Provider>).toJSON();
       expect(htmlTree).toMatchSnapshot();
   });
@@ -72,10 +66,7 @@ describe("Some error with displaying cities", () => {
 
       const htmlTree = renderer.create(
         <Provider store={store}>
-          <Cities
-            addCity={()=> {}}
-            deleteCity={()=> {}}
-            getWeatherByCity={()=> {}}/>
+          <Cities/>
        </Provider>).toJSON();
       expect(htmlTree).toMatchSnapshot();
   });
@@ -91,10 +82,7 @@ describe("Some error with displaying cities", () => {
 
       const htmlTree = renderer.create(
         <Provider store={store}>
-          <Cities
-            addCity={()=> {}}
-            deleteCity={()=> {}}
-            getWeatherByCity={()=> {}}/>
+          <Cities/>
        </Provider>).toJSON();
       expect(htmlTree).toMatchSnapshot();
   });})
